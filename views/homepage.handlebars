@@ -1,0 +1,35 @@
+<div class="container" >
+    {{#if user.logged_in}}
+    {{#each blogs}}
+    <div class="col">
+        <div class="col-sm">
+            <div class="card" style="width: 36rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{{dataValues.title}}}</h5>
+                    <p class="card-text">{{{dataValues.content}}}</p>
+                    <p class="card-text">{{{dataValues.author}}}</p>
+                    <p class="card-text">{{{dataValues.createdAt}}}</p>
+                    <a href="./create"><button>Comment on Post</button></a>
+                </div>
+            </div>
+        </div>   
+
+    {{/each}}
+     {{/if}}
+         {{#unless user.logged_in}}
+         {{#each blogs}}
+    <div class="col">
+        <div class="col-sm">
+            <div class="card" style="width: 36rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{{dataValues.title}}}</h5>
+                    <p class="card-text">{{{dataValues.content}}}</p>
+                    <p class="card-text">{{{dataValues.author}}}</p>
+                    <p class="card-text">{{{dataValues.createdAt}}}</p>
+                </div>
+            </div>
+        </div>   
+    </div>
+    {{/each}}
+    {{/unless}}
+
