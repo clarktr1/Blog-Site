@@ -31,7 +31,7 @@
         {{#if user.logged_in}}
             <p class="text-white nav-item">Welcome, {{{user.username}}}</p>
             <a href="./create"><button class="btn btn btn-success ms-4 text-white" type="button">New Post</button></a>
-             <a href="#"><button class="btn btn btn-danger ms-4 text-white" type="button">Logout</button></a>
+            <button class="btn btn btn-danger ms-4 text-white" id="logout-btn" type="button">Logout</button>
         {{/if}}
       </div>
     </div>
@@ -39,5 +39,8 @@
 </nav>
 <body>
     {{{body}}}
+    {{#if user.logged_in}}
+    <script src="/loggedIn.js"></script>
+    {{/if}}
 </body>
 </html>

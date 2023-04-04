@@ -56,7 +56,6 @@ router.get('/create', async (req, res) => {
     res.redirect('/login')
   } 
   res.render('create', {title: 'Create Post', user: userData,})
-  
 })
 
 module.exports = router;
