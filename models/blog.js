@@ -15,8 +15,12 @@ Blog.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    description:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     content: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.TEXT,
       allowNull: false
     },
     author: {
@@ -26,10 +30,17 @@ Blog.init(
   },
   {
     sequelize,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'blog',
   }
 );
+
+Blog.associate = function(models) {
+  Blog.hasMany(models.Comment, {
+    onDelete: 'cascade'
+  });
+};
 
 module.exports = Blog;

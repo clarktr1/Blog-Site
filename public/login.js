@@ -13,7 +13,7 @@ const login = async (event) => {
 
   if (loginData.ok) {
       alert("Login was successful!");
-      location.document('/')
+      document.location = "./dashboard"
     } else {
       alert('Login was unsuccessful.');
     }
@@ -24,5 +24,3 @@ const login = async (event) => {
   loginBtn.addEventListener('click', function(event){
     login(event)
   });
-
-

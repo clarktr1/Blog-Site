@@ -1,6 +1,6 @@
 const logout = async (event) => {
 event.preventDefault();
-
+const currentURL = window.location.href;
 const logoutData = await fetch('/api/user/logout', {
     method: 'POST', 
     headers: {
@@ -10,7 +10,8 @@ const logoutData = await fetch('/api/user/logout', {
 
 if (logoutData.ok) {
     alert("You have logged out successfully!");
-    window.location.href('/')
+    window.location.replace('/')
+    
   } else {
     alert('Please retry logging out.');
   };

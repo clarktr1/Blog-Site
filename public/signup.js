@@ -1,7 +1,5 @@
 const signup = async (event) => {
     event.preventDefault();
-    
-    console.log('hello')
 
     const username = document.getElementById('username-signup').value.trim()
     const email = document.getElementById('email-signup').value.trim();
@@ -15,7 +13,6 @@ const signup = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
   
-    console.log(response);
       if (response.ok) {
         alert("Signup was successful!");
         document.location = "./dashboard"

@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const Blog = require('../models/blog');
-const User = require('../models/user')
+const { User, Blog, Comment } = require('../models');
 
 router.get('/', async (req, res) => {
   const userData = req.session.user
@@ -12,33 +11,24 @@ router.get('/', async (req, res) => {
     }
   ]
   });
-  console.log(allBlogs)
-  console.log(req.session)
   res.render('homepage', {title: 'Tech Blog Home', user: userData, blogs: allBlogs })
 });
 
 router.get('/login', async (req, res) => {
   const userData = req.session.user
+
   if(userData && userData.logged_in){
-    res.redirect('/')
+    res.redirect('/dashboard')
   }
-  res.render('login', {title: 'Login', user: userData,});
+  res.render('login', {title: 'Login'});
 });
 
 router.get('/signup', async (req, res) => {
   const userData = req.session.user
-  const allBlogs = await Blog.findAll({
-    include: [
-    {
-      model: User,
-      attributes: ['username']
-    }
-  ]
-  });
-  
+
   if(userData && userData.logged_in){
-    res.redirect('/')
-  } res.render('signup', {title: 'Sign Up', user: userData,});
+    res.redirect('/dashboard')
+  } res.render('signup', {title: 'Sign Up'});
 
 });
 
