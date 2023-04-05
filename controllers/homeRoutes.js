@@ -12,9 +12,8 @@ router.get('/', async (req, res) => {
     }
   ]
   });
-  console.log(allBlogs)
   console.log(req.session)
-  res.render('homepage', {title: 'Tech Blog Home', user: userData, blogs: allBlogs })
+  res.render('homepage', {title: 'Tech Blog Home', user: userData, blog: allBlogs })
 });
 
 router.get('/login', async (req, res) => {
