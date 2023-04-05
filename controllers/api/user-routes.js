@@ -26,8 +26,9 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
+    console.error('logging')
     const userData = await User.findOne({ where: { email: req.body.email } });
-
+    console.error(userData)
     if (!userData) {
       return res.status(400).json({ message: 'Incorrect email or password, please try again' });
     }
@@ -42,7 +43,9 @@ router.post('/login', async (req, res) => {
         username: userData.username,
         logged_in: true
       }
+      console.log(user)
       req.session.user = user; 
+      console.log(req.session.user)
       res.status(200).json({ user: userData, message: 'You are now logged in!' })
     };
   } catch (err) {
