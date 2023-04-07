@@ -31,12 +31,4 @@ Comment.init(
     modelName: 'comment',
     });
 
-  Comment.associate = function(models) {
-    Comment.belongsTo(models.Blog, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
-
   module.exports = Comment

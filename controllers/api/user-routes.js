@@ -12,6 +12,7 @@ router.post('/signup', async (req, res) => {
     });
     const userData = await User.findOne({ where: { email: req.body.email } });
     const user = {
+      id: userData.id,
       username: userData.username,
       logged_in: true
     }
@@ -40,6 +41,7 @@ router.post('/login', async (req, res) => {
 
     if (userData && validPassword){
       const user = {
+        id: userData.id,
         username: userData.username,
         logged_in: true
       }

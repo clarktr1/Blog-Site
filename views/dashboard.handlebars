@@ -1,0 +1,15 @@
+<h2>Your Posts</h2>
+{{#each blog}}
+    <div class="col">
+        <div class="col-sm">
+            <div class="card" style="width: 36rem;">
+                <div class="card-body">
+                    <a href="/api/blog/{{{dataValues.id}}}"><h5 class="card-title id">{{{dataValues.title}}}</h5></a>
+                    <p class="card-text">{{{dataValues.description}}}</p>
+                    <p class="card-text id" data-id="{{{dataValues.id}}}">{{{dataValues.createdAt}}}</p>
+                    <button class="btn btn-danger text-white delete">Delete</button>
+                </div>
+            </div>
+        </div>
+{{/each}}
+<script src="/dashboard.js"></script>

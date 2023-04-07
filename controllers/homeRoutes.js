@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     }
   ]
   });
-  res.render('homepage', {title: 'Tech Blog Home', user: userData, blogs: allBlogs })
+  res.render('homepage', {title: 'Tech Blog Home', user: userData, blogs: allBlogs})
 });
 
 router.get('/login', async (req, res) => {
@@ -35,17 +35,20 @@ router.get('/signup', async (req, res) => {
 router.get('/dashboard', async (req, res) => {
   const userData = req.session.user
   if(userData && userData.logged_in){
-    res.render('dashboard', {title: 'Dashboard', user: userData,});
+    const userBlogs = await Blog.findAll({
+      where: {
+        author: userData.id
+      }
+    })
+    res.render('dashboard', {title: 'Dashboard', user: userData, blog: userBlogs});
   } else
     res.redirect('/login')
 });
 
 router.get('/create', async (req, res) => {
   const userData = req.session.user
-  if (!userData && !userData.logged_in){
-    res.redirect('/login')
-  } 
-  res.render('create', {title: 'Create Post', user: userData,})
+
+   res.render('create', {title: 'Create Post', user: userData,})
 })
 
 module.exports = router;

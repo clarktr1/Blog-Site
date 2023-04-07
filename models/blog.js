@@ -37,10 +37,6 @@ Blog.init(
   }
 );
 
-Blog.associate = function(models) {
-  Blog.hasMany(models.Comment, {
-    onDelete: 'cascade'
-  });
-};
+
 
 module.exports = Blog;
