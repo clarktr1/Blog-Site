@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { Blog, User }= require('../../models')
+const { Blog, User, Comment }= require('../../models')
 
 router.post('/create', async (req, res) => {
     const userData = req.session.user
     try {
       const blogPost = await Blog.create({
       title: req.body.title,  
-      description: req.body.title,
+      description: req.body.description,
       content: req.body.content,
       author: userData.id
       });
@@ -17,16 +17,43 @@ router.post('/create', async (req, res) => {
     }
   });
 
+  router.post('/comment', async (req, res) => {
+    const userData = req.session.user
+    try{
+      const userID = userData.id
+      const newComment = await Comment.create({
+        content: req.body.content,
+        user_id: userID,
+        blog_id: req.body.blog_id
+      });
+      res.status(200).json(newComment);
+    } catch (err) {
+      console.error(err)
+      res.status(500).json(err)
+    }
+  })
+
   router.get('/:id', async (req, res) => {
+    const userData = req.session.user
     try {
       const blogData = await Blog.findByPk(req.params.id, {
-        include: {
+        include: [
+          {
           model: User,
           attributes: ['id', 'username']
-        }
+          },
+          {
+          model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ['username'], 
+            },
+          ]}
+      ]
       });
-      console.log(blogData.dataValues.user.dataValues.username)
-      res.render('blogpost', {title: blogData.title, blog: blogData})
+      console.log(blogData)
+      res.render('blogpost', {title: blogData.title, blog: blogData, user: userData})
     } catch (err) {
       res.status(500).json(err);
     }

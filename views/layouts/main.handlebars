@@ -25,12 +25,12 @@
       </ul>
       <div class="d-flex" role="search">
         {{#unless user.logged_in}}
-        <a href="./login"><button class="btn btn-success text-white" type="button">Login</button></a>
-        <a href="./signup"><button class="btn btn btn-danger ms-4 text-white" type="button">Sign Up</button></a>
+        <a href="/login"><button class="btn btn-success text-white" type="button">Login</button></a>
+        <a href="/signup"><button class="btn btn btn-danger ms-4 text-white" type="button">Sign Up</button></a>
         {{/unless}}
         {{#if user.logged_in}}
             <p class="text-white nav-item">Welcome, {{{user.username}}}</p>
-            <a href="./create"><button class="btn btn btn-success ms-4 text-white" type="button">New Post</button></a>
+            <a href="/create"><button class="btn btn btn-success ms-4 text-white" type="button">New Post</button></a>
             <button class="btn btn btn-danger ms-4 text-white" id="logout-btn" type="button">Logout</button>
         {{/if}}
       </div>

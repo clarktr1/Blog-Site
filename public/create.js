@@ -3,7 +3,7 @@ event.preventDefault()
 
 const title = document.getElementById('blog-title').value.trim()
 const description = document.getElementById('blog-description').value.trim()
-const content = document.getElementById('blog-content').value.trim()
+const content = document.getElementById('blog-content').value
 
 if (title && description && content){
 const post = await fetch('/api/blog/create', {

@@ -1,19 +1,15 @@
 <div class="container" >
+    <h2 class="title"> Recent Posts </h2>
     {{#if user.logged_in}}
     {{#each blogs}}
     <div class="col">
         <div class="col-sm">
-            <div class="card" style="width: 50vw; height: 36vh">
+            <div class="card" style="width: 50vw; height: 25vh">
                 <div class="card-body">
-                   <a href="/api/blog/{{{dataValues.id}}}"><h5 class="card-title">{{{dataValues.title}}}</h5></a>
-                    <p class="card-text">By: {{{dataValues.author}}}</p>
-                    <p class="card-text">{{{dataValues.createdAt}}}</p>
-                    <button class="btn btn btn-success text-white comment">Comment on Post</button>
-                    <form class="form" style="display: none;">
-                    <input class="form-control form-control-lg comment-text" type="text" required />
-                    <button class="btn btn btn-success text-white submit">Submit</button>
-                    <button class="btn btn btn-danger text-white cancel" >Cancel</button>
-                    </form>
+                    <a href="/api/blog/{{{dataValues.id}}}"><h5 class="card-title">{{{dataValues.title}}}</h5></a>
+                    <p class="card-text">By: {{{user.dataValues.username}}}</p>
+                    <p class="card-text" style="font-style: italic;">{{{dataValues.description}}}</p>
+                    <p class="card-text" style="font-size: smaller;">{{{dataValues.createdAt}}}</p>
                 </div>
             </div>
         </div>
@@ -25,10 +21,10 @@
         <div class="col-sm">
             <div class="card" style="width: 36rem;">
                 <div class="card-body">
-                    <h5 class="card-title">{{{dataValues.title}}}</h5>
-                    <p class="card-text">{{{dataValues.content}}}</p>
-                    <p class="card-text">By: {{{dataValues.author}}}</p>
-                    <p class="card-text">{{{dataValues.createdAt}}}</p>
+                    <a href="/api/blog/{{{dataValues.id}}}"><h5 class="card-title">{{{dataValues.title}}}</h5></a>
+                    <p class="card-text">By: {{{user.dataValues.username}}}</p>
+                    <p class="card-text" style="font-style: italic;">{{{dataValues.description}}}</p>
+                    <p class="card-text" style="font-size: smaller;">{{{dataValues.createdAt}}}</p>
                 </div>
             </div>
         </div>   

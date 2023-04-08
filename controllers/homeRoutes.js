@@ -4,6 +4,7 @@ const { User, Blog, Comment } = require('../models');
 router.get('/', async (req, res) => {
   const userData = req.session.user
   const allBlogs = await Blog.findAll({
+    order: [['createdAt', 'DESC']],
     include: [
     {
       model: User,
@@ -11,6 +12,7 @@ router.get('/', async (req, res) => {
     }
   ]
   });
+  console.log(allBlogs)
   res.render('homepage', {title: 'Tech Blog Home', user: userData, blogs: allBlogs})
 });
 
