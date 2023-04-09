@@ -5,7 +5,6 @@ const Comment = require('./comments')
 
 Blog.belongsTo(User, {
   foreignKey: 'author',
-   targetKey: 'id',
    allowNull: false
   });
 
@@ -16,7 +15,6 @@ Blog.hasMany(Comment, {
 Comment.belongsTo(Blog, {
     foreignKey: {
         name: 'blog_id',
-        targetKey: 'id',
         allowNull: false
     }
   });
@@ -24,7 +22,6 @@ Comment.belongsTo(Blog, {
   Comment.belongsTo(User, {
     foreignKey: {
         name: 'user_id',
-        targetKey: 'id',
         allowNull: false
     }
   })

@@ -47,7 +47,7 @@ router.post('/create', async (req, res) => {
           include: [
             {
               model: User,
-              attributes: ['username'], 
+              attributes: ['username', 'created_At'], 
             },
           ]}
       ]

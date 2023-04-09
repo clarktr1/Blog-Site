@@ -5,7 +5,7 @@ const commentSeeds = [
   {
     content: "Great post, thanks for sharing!",
     user_id: 1,
-    blog_id: 1
+    blog_id: 1,
   },
   {
     content: "I found this really helpful, thanks!",
